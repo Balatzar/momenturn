@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnxqft3j0so8f"]
+
+[ext_resource type="Script" path="res://blade.gd" id="1_okp0q"]
+[ext_resource type="Texture2D" uid="uid://7w57tv442ssf" path="res://assets/Blade flat.png" id="1_vtygn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fyicv"]
+radius = 21.6667
+height = 216.0
+
+[node name="Blade" type="Area2D" groups=["blades"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_okp0q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 107)
+shape = SubResource("CapsuleShape2D_fyicv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, 107)
+rotation = 1.5708
+texture = ExtResource("1_vtygn")

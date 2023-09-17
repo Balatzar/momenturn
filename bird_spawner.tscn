@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4c3eim0o8gde"]
+
+[ext_resource type="Script" path="res://bird_spawner.gd" id="1_ibyw6"]
+
+[node name="BirdSpawner" type="Marker2D" groups=["bird_spawners"]]
+script = ExtResource("1_ibyw6")
+direction = -1

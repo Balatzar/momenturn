@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnnqhtbnh060j"]
+
+[ext_resource type="PackedScene" uid="uid://bbpy40xifscdv" path="res://windmill.tscn" id="1_1sbc0"]
+[ext_resource type="Script" path="res://level.gd" id="1_aytpy"]
+[ext_resource type="Texture2D" uid="uid://cksggcr61ckau" path="res://assets/mouchoir._green_countryside_2D_video_game_doodle_cute_side_view_57547609-da98-4b8f-a33a-589615461c07.png" id="2_bhnu7"]
+[ext_resource type="PackedScene" uid="uid://bv41qtpbogb8c" path="res://god.tscn" id="2_psreb"]
+[ext_resource type="PackedScene" uid="uid://4c3eim0o8gde" path="res://bird_spawner.tscn" id="3_k1wyp"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_aytpy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(981.699, 537.5)
+scale = Vector2(1.81656, 1.81656)
+texture = ExtResource("2_bhnu7")
+
+[node name="Windmill" parent="." instance=ExtResource("1_1sbc0")]
+position = Vector2(997, 734)
+scale = Vector2(1.4, 1.4)
+
+[node name="God" parent="." instance=ExtResource("2_psreb")]
+position = Vector2(1309, 165)
+
+[node name="Spawners" type="Node" parent="."]
+
+[node name="BirdSpawner" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(-65, 725)
+direction = 1
+
+[node name="BirdSpawner2" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2021, 543)
+
+[node name="BirdSpawner3" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(-58, 522)
+direction = 1
+
+[node name="BirdSpawner4" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(-64, 355)
+direction = 1
+
+[node name="BirdSpawner5" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(-72, 183)
+direction = 1
+
+[node name="BirdSpawner6" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(-69, 876)
+direction = 1
+
+[node name="BirdSpawner7" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(-78, 610)
+direction = 1
+
+[node name="BirdSpawner8" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2038, 449)
+
+[node name="BirdSpawner9" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2041, 650)
+
+[node name="BirdSpawner10" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2029, 768)
+
+[node name="BirdSpawner11" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2032, 279)
+
+[node name="BirdSpawner12" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2035, 149)
+
+[node name="BirdSpawner13" parent="Spawners" instance=ExtResource("3_k1wyp")]
+position = Vector2(2021, 887)
+
+[node name="StartScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Instructions" type="Label" parent="StartScreen"]
+layout_mode = 0
+offset_left = 658.0
+offset_top = 746.0
+offset_right = 1407.0
+offset_bottom = 920.0
+theme_override_font_sizes/font_size = 40
+text = "Blow on the windmill so it doesn't stop.
+
+Blow on the birds to push them away."
+
+[node name="Start" type="Button" parent="StartScreen"]
+process_mode = 3
+offset_left = 936.0
+offset_top = 517.0
+offset_right = 1062.0
+offset_bottom = 594.0
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="EndScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" type="Label" parent="EndScreen"]
+offset_left = 54.0
+offset_top = 468.0
+offset_right = 1928.0
+offset_bottom = 715.0
+theme_override_font_sizes/font_size = 90
+text = "You lost! You survived for X seconds."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="EndScreen"]
+process_mode = 3
+layout_mode = 0
+offset_left = 890.0
+offset_top = 754.0
+offset_right = 1120.0
+offset_bottom = 831.0
+theme_override_font_sizes/font_size = 50
+text = "Try again"
+
+[connection signal="died" from="Windmill" to="." method="_on_windmill_died"]
+[connection signal="pressed" from="StartScreen/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="EndScreen/Restart" to="." method="_on_restart_pressed"]

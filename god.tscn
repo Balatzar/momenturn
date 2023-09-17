@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bv41qtpbogb8c"]
+
+[ext_resource type="Script" path="res://god.gd" id="1_bbvtt"]
+[ext_resource type="Texture2D" uid="uid://bihusu0j4hfb7" path="res://assets/Fan trois quarts.png" id="2_ed834"]
+[ext_resource type="Texture2D" uid="uid://b7lurta7bkmu2" path="res://assets/wind/Vent frame 1.png" id="3_4w5yn"]
+[ext_resource type="Texture2D" uid="uid://cb2ht1t35evm4" path="res://assets/wind/Vent frame 2.png" id="4_xpdni"]
+[ext_resource type="Texture2D" uid="uid://dgdllcvpbxgvr" path="res://assets/wind/Vent frame 3.png" id="5_bupww"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_quu0m"]
+radius = 122.801
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iihsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4w5yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xpdni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bupww")
+}],
+"loop": true,
+"name": &"blow",
+"speed": 5.0
+}]
+
+[node name="God" type="CharacterBody2D"]
+script = ExtResource("1_bbvtt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-128, -25)
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("2_ed834")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_quu0m")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(123, 40)
+
+[node name="Wind" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-14, 21, 369, 184, 377, -244, -9, -105, -9, -105)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0.494118)
+position = Vector2(158, -56)
+scale = Vector2(2.00495, 1.68421)
+sprite_frames = SubResource("SpriteFrames_iihsn")
+animation = &"blow"
+autoplay = "blow"
+frame_progress = 0.432418
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 200
 @export var blown_strength := 1000
+
 var mouse_position = null
 var blades = {}
 var birds = {}
@@ -11,10 +12,19 @@ func _physics_process(delta):
 	mouse_position = get_global_mouse_position()
  
 	var direction = (mouse_position - position).normalized()
-	velocity = (direction * speed)
+	velocity = direction * speed
 	
-	move_and_slide()
-	look_at(mouse_position)
+	var diff_x = mouse_position.x - global_position.x
+	var diff_y = mouse_position.y - global_position.y
+	
+	print(mouse_position)
+	print(global_position)
+	print(diff_x)
+	print(diff_y)
+	
+	if abs(diff_x) >= 2 and abs(diff_y) >= 2:
+		move_and_slide()
+		look_at(mouse_position)
 
 func _process(delta):
 	for blade in blades.values():

@@ -19,7 +19,7 @@ position = Vector2(997, 734)
 scale = Vector2(1.4, 1.4)
 
 [node name="God" parent="." instance=ExtResource("2_psreb")]
-position = Vector2(1309, 165)
+position = Vector2(250, 223)
 
 [node name="Spawners" type="Node" parent="."]
 
@@ -87,6 +87,7 @@ Blow on the birds to push them away."
 
 [node name="Start" type="Button" parent="StartScreen"]
 process_mode = 3
+layout_mode = 0
 offset_left = 936.0
 offset_top = 517.0
 offset_right = 1062.0
@@ -102,6 +103,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Score" type="Label" parent="EndScreen"]
+layout_mode = 0
 offset_left = 54.0
 offset_top = 468.0
 offset_right = 1928.0

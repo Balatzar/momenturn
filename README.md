@@ -59,7 +59,7 @@ Play the game [here](https://blatalzar.itch.io/momenturn).
 - [ ] **Windmill Dynamics**: Blowing against the windmill's rotation slows it down.
   
 ### Bug Fixes:
-- [ ] **Fan Behavior**: Address the issue where the fan switches rapidly between left and right when the mouse is stationary.
+- [x] **Fan Behavior**: Address the issue where the fan switches rapidly between left and right when the mouse is stationary.
 - [ ] **Feedback on Blades**: Enhance visual or audio cues to clearly indicate when the windmill blades are being influenced by the fan.
 - [ ] **Bird Dynamics**:
   - [ ] Equip birds with a life attribute. When blown upon sufficiently, the bird perishes (utilizing the available dead bird sprite) and falls to the screen's base.
